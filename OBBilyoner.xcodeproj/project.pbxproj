@@ -6,6 +6,18 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7C62A5E02D57599300E25F4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C62A5D42D57599300E25F4F /* Assets.xcassets */; };
+		7C62A5E22D57599300E25F4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C62A5DB2D57599300E25F4F /* LaunchScreen.storyboard */; };
+		7C62A5E32D57599300E25F4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C62A5DD2D57599300E25F4F /* Main.storyboard */; };
+		7C62A5E42D57599300E25F4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A5D62D57599300E25F4F /* AppDelegate.swift */; };
+		7C62A5E52D57599300E25F4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A5D82D57599300E25F4F /* SceneDelegate.swift */; };
+		7C62A5E62D57599300E25F4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A5DE2D57599300E25F4F /* ViewController.swift */; };
+		7C62A5EA2D575A5400E25F4F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A5E92D575A4800E25F4F /* TabBarViewController.swift */; };
+		7C62A5EE2D575B2900E25F4F /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C62A5ED2D575B2900E25F4F /* HomeViewController.xib */; };
+		7C62A5EF2D575B2900E25F4F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A5EC2D575B2900E25F4F /* HomeViewController.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		7C62A5B42D5754EE00E25F4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,27 +39,19 @@
 		7C62A59D2D5754EC00E25F4F /* OBBilyoner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OBBilyoner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C62A5B32D5754EE00E25F4F /* OBBilyonerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OBBilyonerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C62A5BD2D5754EE00E25F4F /* OBBilyonerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OBBilyonerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C62A5D42D57599300E25F4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7C62A5D62D57599300E25F4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7C62A5D72D57599300E25F4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C62A5D82D57599300E25F4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7C62A5DA2D57599300E25F4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7C62A5DC2D57599300E25F4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7C62A5DE2D57599300E25F4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7C62A5E92D575A4800E25F4F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		7C62A5EC2D575B2900E25F4F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7C62A5ED2D575B2900E25F4F /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		7C62A5C52D5754EE00E25F4F /* Exceptions for "OBBilyoner" folder in "OBBilyoner" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 7C62A59C2D5754EC00E25F4F /* OBBilyoner */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7C62A59F2D5754EC00E25F4F /* OBBilyoner */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				7C62A5C52D5754EE00E25F4F /* Exceptions for "OBBilyoner" folder in "OBBilyoner" target */,
-			);
-			path = OBBilyoner;
-			sourceTree = "<group>";
-		};
 		7C62A5B62D5754EE00E25F4F /* OBBilyonerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = OBBilyonerTests;
@@ -88,7 +92,7 @@
 		7C62A5942D5754EC00E25F4F = {
 			isa = PBXGroup;
 			children = (
-				7C62A59F2D5754EC00E25F4F /* OBBilyoner */,
+				7C62A5DF2D57599300E25F4F /* OBBilyoner */,
 				7C62A5B62D5754EE00E25F4F /* OBBilyonerTests */,
 				7C62A5C02D5754EE00E25F4F /* OBBilyonerUITests */,
 				7C62A59E2D5754EC00E25F4F /* Products */,
@@ -105,6 +109,63 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7C62A5D52D57599300E25F4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A5D42D57599300E25F4F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7C62A5D92D57599300E25F4F /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A5D62D57599300E25F4F /* AppDelegate.swift */,
+				7C62A5D72D57599300E25F4F /* Info.plist */,
+				7C62A5D82D57599300E25F4F /* SceneDelegate.swift */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		7C62A5DF2D57599300E25F4F /* OBBilyoner */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A5E72D5759DB00E25F4F /* Main */,
+				7C62A5D52D57599300E25F4F /* Resources */,
+				7C62A5D92D57599300E25F4F /* SupportFiles */,
+				7C62A5DB2D57599300E25F4F /* LaunchScreen.storyboard */,
+				7C62A5DD2D57599300E25F4F /* Main.storyboard */,
+				7C62A5DE2D57599300E25F4F /* ViewController.swift */,
+			);
+			path = OBBilyoner;
+			sourceTree = "<group>";
+		};
+		7C62A5E72D5759DB00E25F4F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A5E82D575A4000E25F4F /* TabBar */,
+				7C62A5EB2D575B0100E25F4F /* Home */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7C62A5E82D575A4000E25F4F /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A5E92D575A4800E25F4F /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		7C62A5EB2D575B0100E25F4F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A5EC2D575B2900E25F4F /* HomeViewController.swift */,
+				7C62A5ED2D575B2900E25F4F /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +180,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				7C62A59F2D5754EC00E25F4F /* OBBilyoner */,
 			);
 			name = OBBilyoner;
 			packageProductDependencies = (
@@ -225,6 +283,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C62A5E02D57599300E25F4F /* Assets.xcassets in Resources */,
+				7C62A5E22D57599300E25F4F /* LaunchScreen.storyboard in Resources */,
+				7C62A5E32D57599300E25F4F /* Main.storyboard in Resources */,
+				7C62A5EE2D575B2900E25F4F /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +311,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C62A5EF2D575B2900E25F4F /* HomeViewController.swift in Sources */,
+				7C62A5E42D57599300E25F4F /* AppDelegate.swift in Sources */,
+				7C62A5E52D57599300E25F4F /* SceneDelegate.swift in Sources */,
+				7C62A5E62D57599300E25F4F /* ViewController.swift in Sources */,
+				7C62A5EA2D575A5400E25F4F /* TabBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +348,25 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		7C62A5DB2D57599300E25F4F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C62A5DA2D57599300E25F4F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7C62A5DD2D57599300E25F4F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C62A5DC2D57599300E25F4F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		7C62A5C72D5754EE00E25F4F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -291,7 +377,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C2376DM4KF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OBBilyoner/Info.plist;
+				INFOPLIST_FILE = OBBilyoner/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -319,7 +405,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C2376DM4KF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OBBilyoner/Info.plist;
+				INFOPLIST_FILE = OBBilyoner/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
