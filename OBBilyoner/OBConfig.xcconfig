@@ -1,0 +1,17 @@
+//
+//  OBConfig.xcconfig
+//  OBBilyoner
+//
+//  Created by Özkan Bölükbaş on 8.02.2025.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+ENVIROMENT_CONFIGURATION = Development
+
+// Server URL
+BASE_URL = https:/$()/api.the-odds-api.com/v4/
+
+// Api Key
+API_KEY = 4da14776127bba63ee7849fa1b698017
