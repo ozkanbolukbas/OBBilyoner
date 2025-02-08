@@ -27,7 +27,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 		homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
 		eventsVC.tabBarItem = UITabBarItem(title: "Events", image: UIImage(systemName: "sportscourt"), tag: 1)
 		basketVC.tabBarItem = UITabBarItem(title: "Basket", image: UIImage(systemName: "cart"), tag: 2)
-		self.viewControllers = [homeVC, eventsVC]
+		self.viewControllers = [UINavigationController(rootViewController: homeVC), UINavigationController(rootViewController: eventsVC)]
 
 		//Configure tab bar appearance
 		self.tabBar.tintColor = .systemBlue
