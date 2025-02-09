@@ -33,12 +33,17 @@
 		7C62A6BB2D58A10200E25F4F /* ReactiveExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6BA2D58A0FC00E25F4F /* ReactiveExt.swift */; };
 		7C62A6BD2D58AE9800E25F4F /* UICollectionViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6BC2D58AE8E00E25F4F /* UICollectionViewExt.swift */; };
 		7C62A6BF2D58AEDF00E25F4F /* NSObjectExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6BE2D58AED600E25F4F /* NSObjectExt.swift */; };
-		7C62A6C22D58B6D300E25F4F /* OddsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C62A6C12D58B6D300E25F4F /* OddsTableViewCell.xib */; };
-		7C62A6C32D58B6D300E25F4F /* OddsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6C02D58B6D300E25F4F /* OddsTableViewCell.swift */; };
 		7C62A6C52D58C37600E25F4F /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6C42D58C36A00E25F4F /* UITableViewExt.swift */; };
 		7C62A6C82D58CB6C00E25F4F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 7C62A6C72D58CB6C00E25F4F /* RxCocoa */; };
 		7C62A6CA2D58CB6C00E25F4F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 7C62A6C92D58CB6C00E25F4F /* RxRelay */; };
 		7C62A6CC2D58CB6C00E25F4F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7C62A6CB2D58CB6C00E25F4F /* RxSwift */; };
+		7C62A6CF2D58D78F00E25F4F /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6CE2D58D78500E25F4F /* BasketViewController.swift */; };
+		7C62A6D32D58D7F300E25F4F /* BasketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6D22D58D7EE00E25F4F /* BasketViewModel.swift */; };
+		7C62A6D52D58DEE700E25F4F /* BasketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6D42D58DEE200E25F4F /* BasketModel.swift */; };
+		7C62A6D72D58EADF00E25F4F /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6D62D58EADB00E25F4F /* ArrayExt.swift */; };
+		7C62A6DA2D58EF0B00E25F4F /* BasketEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6D92D58EF0400E25F4F /* BasketEventCell.swift */; };
+		7C62A6DD2D59049000E25F4F /* OddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C62A6DC2D59049000E25F4F /* OddTableViewCell.xib */; };
+		7C62A6DE2D59049000E25F4F /* OddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6DB2D59049000E25F4F /* OddTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,9 +91,14 @@
 		7C62A6BA2D58A0FC00E25F4F /* ReactiveExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveExt.swift; sourceTree = "<group>"; };
 		7C62A6BC2D58AE8E00E25F4F /* UICollectionViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExt.swift; sourceTree = "<group>"; };
 		7C62A6BE2D58AED600E25F4F /* NSObjectExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExt.swift; sourceTree = "<group>"; };
-		7C62A6C02D58B6D300E25F4F /* OddsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddsTableViewCell.swift; sourceTree = "<group>"; };
-		7C62A6C12D58B6D300E25F4F /* OddsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OddsTableViewCell.xib; sourceTree = "<group>"; };
 		7C62A6C42D58C36A00E25F4F /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
+		7C62A6CE2D58D78500E25F4F /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		7C62A6D22D58D7EE00E25F4F /* BasketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewModel.swift; sourceTree = "<group>"; };
+		7C62A6D42D58DEE200E25F4F /* BasketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketModel.swift; sourceTree = "<group>"; };
+		7C62A6D62D58EADB00E25F4F /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
+		7C62A6D92D58EF0400E25F4F /* BasketEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketEventCell.swift; sourceTree = "<group>"; };
+		7C62A6DB2D59049000E25F4F /* OddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddTableViewCell.swift; sourceTree = "<group>"; };
+		7C62A6DC2D59049000E25F4F /* OddTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OddTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -195,6 +205,7 @@
 			children = (
 				7C62A5E82D575A4000E25F4F /* TabBar */,
 				7C62A5EB2D575B0100E25F4F /* Home */,
+				7C62A6CD2D58D77000E25F4F /* Basket */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -238,6 +249,7 @@
 		7C62A69E2D577D0000E25F4F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7C62A6D42D58DEE200E25F4F /* BasketModel.swift */,
 				7C62A6B72D587FC700E25F4F /* EventCategory.swift */,
 				7C62A6A02D5788F600E25F4F /* Request */,
 				7C62A69F2D5788EE00E25F4F /* Response */,
@@ -292,8 +304,8 @@
 			children = (
 				7C62A6B32D587CED00E25F4F /* EventsCollectionViewCell.swift */,
 				7C62A6B42D587CED00E25F4F /* EventsCollectionViewCell.xib */,
-				7C62A6C02D58B6D300E25F4F /* OddsTableViewCell.swift */,
-				7C62A6C12D58B6D300E25F4F /* OddsTableViewCell.xib */,
+				7C62A6DB2D59049000E25F4F /* OddTableViewCell.swift */,
+				7C62A6DC2D59049000E25F4F /* OddTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -301,12 +313,47 @@
 		7C62A6B92D58A0D400E25F4F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7C62A6D62D58EADB00E25F4F /* ArrayExt.swift */,
 				7C62A6C42D58C36A00E25F4F /* UITableViewExt.swift */,
 				7C62A6BE2D58AED600E25F4F /* NSObjectExt.swift */,
 				7C62A6BC2D58AE8E00E25F4F /* UICollectionViewExt.swift */,
 				7C62A6BA2D58A0FC00E25F4F /* ReactiveExt.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7C62A6CD2D58D77000E25F4F /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A6D12D58D7E300E25F4F /* View */,
+				7C62A6D02D58D7DB00E25F4F /* ViewModel */,
+			);
+			path = Basket;
+			sourceTree = "<group>";
+		};
+		7C62A6D02D58D7DB00E25F4F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A6D22D58D7EE00E25F4F /* BasketViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7C62A6D12D58D7E300E25F4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A6D82D58EEFB00E25F4F /* Cells */,
+				7C62A6CE2D58D78500E25F4F /* BasketViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C62A6D82D58EEFB00E25F4F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A6D92D58EF0400E25F4F /* BasketEventCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,7 +490,7 @@
 				7C62A5EE2D575B2900E25F4F /* HomeViewController.xib in Resources */,
 				7C62A6B52D587CED00E25F4F /* EventsCollectionViewCell.xib in Resources */,
 				7C62A69D2D577C3300E25F4F /* OBConfig.xcconfig in Resources */,
-				7C62A6C22D58B6D300E25F4F /* OddsTableViewCell.xib in Resources */,
+				7C62A6DD2D59049000E25F4F /* OddTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,24 +515,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C62A6C32D58B6D300E25F4F /* OddsTableViewCell.swift in Sources */,
 				7C62A6BB2D58A10200E25F4F /* ReactiveExt.swift in Sources */,
 				7C62A5EF2D575B2900E25F4F /* HomeViewController.swift in Sources */,
 				7C62A5E42D57599300E25F4F /* AppDelegate.swift in Sources */,
+				7C62A6D32D58D7F300E25F4F /* BasketViewModel.swift in Sources */,
 				7C62A6BF2D58AEDF00E25F4F /* NSObjectExt.swift in Sources */,
 				7C62A6922D577B1C00E25F4F /* ApiRouter.swift in Sources */,
 				7C62A6A32D57891200E25F4F /* OddsRequest.swift in Sources */,
 				7C62A5E52D57599300E25F4F /* SceneDelegate.swift in Sources */,
 				7C62A6B82D587FD800E25F4F /* EventCategory.swift in Sources */,
+				7C62A6CF2D58D78F00E25F4F /* BasketViewController.swift in Sources */,
 				7C62A6962D577B6300E25F4F /* APIError.swift in Sources */,
 				7C62A69B2D577BDB00E25F4F /* Enviroment.swift in Sources */,
 				7C62A5EA2D575A5400E25F4F /* TabBarViewController.swift in Sources */,
 				7C62A6A52D578B1000E25F4F /* OddsResponse.swift in Sources */,
+				7C62A6DA2D58EF0B00E25F4F /* BasketEventCell.swift in Sources */,
 				7C62A6942D577B3300E25F4F /* ApiClient.swift in Sources */,
 				7C62A6BD2D58AE9800E25F4F /* UICollectionViewExt.swift in Sources */,
+				7C62A6D72D58EADF00E25F4F /* ArrayExt.swift in Sources */,
 				7C62A6992D577BCF00E25F4F /* Constants.swift in Sources */,
+				7C62A6D52D58DEE700E25F4F /* BasketModel.swift in Sources */,
 				7C62A6B62D587CED00E25F4F /* EventsCollectionViewCell.swift in Sources */,
 				7C62A6C52D58C37600E25F4F /* UITableViewExt.swift in Sources */,
+				7C62A6DE2D59049000E25F4F /* OddTableViewCell.swift in Sources */,
 				7C62A6AB2D57AE2400E25F4F /* HomeViewModel.swift in Sources */,
 				7C62A6AE2D57AE6400E25F4F /* ViewModelType.swift in Sources */,
 			);
