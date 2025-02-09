@@ -107,7 +107,6 @@ class BasketEventCell: UITableViewCell {
 		}
 	}
 
-
 	// Configure cell with data
 	func configure(with event: BasketModel) {
 		currentEvent = event

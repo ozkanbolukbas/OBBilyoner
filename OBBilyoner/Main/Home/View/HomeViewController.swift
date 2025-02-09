@@ -31,8 +31,8 @@ class HomeViewController: UIViewController {
 	// MARK: - Bind ViewModel
 	func bindViewModel() {
 		refreshControl.rx.controlEvent(.valueChanged)
-				   .bind(to: viewModel.input.refresh)
-				   .disposed(by: disposeBag)
+			.bind(to: viewModel.input.refresh)
+			.disposed(by: disposeBag)
 
 		eventsCollectionView.rx.setDelegate(self)
 			.disposed(by: disposeBag)
@@ -54,25 +54,25 @@ class HomeViewController: UIViewController {
 			.disposed(by: disposeBag)
 
 		viewModel.output.events
-					.drive(oddsTableView.rx.items(
-						cellIdentifier: OddTableViewCell.reuseId,
-						cellType: OddTableViewCell.self)
-					) { [weak self] row, item, cell in
-						guard let self = self else { return }
-						cell.configure(
-							with: item,
-							basketUpdates: self.viewModel.output.basketUpdates
-						)
-						cell.selectionStyle = .none
-						cell.rx.tap
-							.compactMap { [weak cell] tappedIndex -> (oddIndex: Int, event: OddsResponse)? in
-								guard let cell = cell, let event = cell.currentEvent else { return nil }
-								return (oddIndex: tappedIndex, event: event)
-							}
-							.bind(to: self.viewModel.input.oddSelected)
-							.disposed(by: cell.disposeBag)
+			.drive(oddsTableView.rx.items(
+				cellIdentifier: OddTableViewCell.reuseId,
+				cellType: OddTableViewCell.self)
+			) { [weak self] row, item, cell in
+				guard let self = self else { return }
+				cell.configure(
+					with: item,
+					basketUpdates: self.viewModel.output.basketUpdates
+				)
+				cell.selectionStyle = .none
+				cell.rx.tap
+					.compactMap { [weak cell] tappedIndex -> (oddIndex: Int, event: OddsResponse)? in
+						guard let cell = cell, let event = cell.currentEvent else { return nil }
+						return (oddIndex: tappedIndex, event: event)
 					}
-					.disposed(by: disposeBag)
+					.bind(to: self.viewModel.input.oddSelected)
+					.disposed(by: cell.disposeBag)
+			}
+			.disposed(by: disposeBag)
 
 		viewModel.output.isLoading
 			.drive(onNext: { [weak self] isLoading in
@@ -90,10 +90,13 @@ class HomeViewController: UIViewController {
 			})
 			.disposed(by: disposeBag)
 		viewModel.output.selectedCategoryIndex
-				 .drive(onNext: { [weak self] index in
-					 self?.updateSelectedCategory(at: index)
-				 })
-				 .disposed(by: disposeBag)
+			.drive(onNext: { [weak self] index in
+				guard let self = self else { return }
+				DispatchQueue.main.async {
+					self.updateSelectedCategory(at: index)
+				}
+			})
+			.disposed(by: disposeBag)
 	}
 
 	private func showError(_ error: Error) {

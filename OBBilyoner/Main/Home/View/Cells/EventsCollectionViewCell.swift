@@ -19,16 +19,6 @@ class EventsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-	override var isSelected: Bool {
-		didSet {
-			if self.isSelected {
-				self.backgroundColor = .systemRed
-			} else {
-				self.backgroundColor = .systemGreen
-			}
-		}
-	}
-
 	func configure(with category: EventCategory) {
 		eventImage.image = UIImage(named: category.imageName)
 		eventTitle.text = category.name
