@@ -95,6 +95,9 @@ class BasketViewModel: ViewModelType {
 		// Calculate total odds by multiplying together the odds for each basket event.
 		basketEvents
 			.map { events -> String in
+				guard !events.isEmpty else {
+					return "0.00"
+				}
 				let total = events.compactMap { event -> Double? in
 					guard let firstBookmaker = event.odd.bookmakers?.first,
 						  let firstMarket = firstBookmaker.markets?.first,
