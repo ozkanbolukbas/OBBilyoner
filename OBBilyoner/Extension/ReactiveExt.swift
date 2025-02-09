@@ -15,3 +15,9 @@ extension Reactive where Base: UIViewController {
 		return ControlEvent(events: source)
 	}
 }
+
+extension Reactive where Base: OddTableViewCell {
+	var tap: Observable<Int> {
+		return base.oddSelected
+	}
+}

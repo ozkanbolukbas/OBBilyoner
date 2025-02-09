@@ -21,7 +21,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 		// Create view controllers for each tab
 		let homeVC = HomeViewController()
 		let basketVC = HomeViewController()
-		let eventsVC = HomeViewController()
+		let eventsVC = BasketViewController()
 
 		// Set the view controllers for tab bar
 		homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)

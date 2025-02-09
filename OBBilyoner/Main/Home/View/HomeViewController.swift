@@ -16,16 +16,24 @@ class HomeViewController: UIViewController {
 
 	let viewModel = HomeViewModel()
 	let disposeBag = DisposeBag()
+	private let refreshControl = UIRefreshControl()
 
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		self.navigationController?.isNavigationBarHidden = true
 		eventsCollectionView.register(cellType: EventsCollectionViewCell.self)
-		oddsTableView.register(cellType: OddsTableViewCell.self)
+		oddsTableView.register(cellType: OddTableViewCell.self)
+		oddsTableView.refreshControl = refreshControl
 		bindViewModel()
-    }
+		viewModel.input.viewDidLoad.onNext(())
+	}
 
+	// MARK: - Bind ViewModel
 	func bindViewModel() {
+		refreshControl.rx.controlEvent(.valueChanged)
+				   .bind(to: viewModel.input.refresh)
+				   .disposed(by: disposeBag)
+
 		eventsCollectionView.rx.setDelegate(self)
 			.disposed(by: disposeBag)
 
@@ -36,34 +44,97 @@ class HomeViewController: UIViewController {
 			.bind(to: viewModel.input.selectRow)
 			.disposed(by: disposeBag)
 
-		viewModel.output.sports
-			.drive(eventsCollectionView.rx.items(cellIdentifier: EventsCollectionViewCell.reuseId, cellType: EventsCollectionViewCell.self)) { (_, event, cell) in
-				cell.configure(with: event)
+		viewModel.output.categories
+			.drive(eventsCollectionView.rx.items(
+				cellIdentifier: EventsCollectionViewCell.reuseId,
+				cellType: EventsCollectionViewCell.self)
+			) { _, category, cell in
+				cell.configure(with: category)
 			}
 			.disposed(by: disposeBag)
 
-		viewModel.output.events.drive(oddsTableView.rx.items(cellIdentifier: OddsTableViewCell.reuseId, cellType: OddsTableViewCell.self)) { (_, item, cell) in
-			cell.configure(with: item)
-			cell.delegate = self
-			cell.selectionStyle = .none
+		viewModel.output.events
+					.drive(oddsTableView.rx.items(
+						cellIdentifier: OddTableViewCell.reuseId,
+						cellType: OddTableViewCell.self)
+					) { [weak self] row, item, cell in
+						guard let self = self else { return }
+						cell.configure(
+							with: item,
+							basketUpdates: self.viewModel.output.basketUpdates
+						)
+						cell.selectionStyle = .none
+						cell.rx.tap
+							.compactMap { [weak cell] tappedIndex -> (oddIndex: Int, event: OddsResponse)? in
+								guard let cell = cell, let event = cell.currentEvent else { return nil }
+								return (oddIndex: tappedIndex, event: event)
+							}
+							.bind(to: self.viewModel.input.oddSelected)
+							.disposed(by: cell.disposeBag)
+					}
+					.disposed(by: disposeBag)
+
+		viewModel.output.isLoading
+			.drive(onNext: { [weak self] isLoading in
+				if !isLoading {
+					self?.refreshControl.endRefreshing()
+				}
+			})
+			.disposed(by: disposeBag)
+
+		// Bind errors
+		viewModel.output.error
+			.drive(onNext: { [weak self] error in
+				guard let error = error else { return }
+				self?.showError(error)
+			})
+			.disposed(by: disposeBag)
+		viewModel.output.selectedCategoryIndex
+				 .drive(onNext: { [weak self] index in
+					 self?.updateSelectedCategory(at: index)
+				 })
+				 .disposed(by: disposeBag)
+	}
+
+	private func showError(_ error: Error) {
+		let alert = UIAlertController(
+			title: "Error",
+			message: error.localizedDescription,
+			preferredStyle: .alert
+		)
+		alert.addAction(UIAlertAction(title: "OK", style: .default))
+		present(alert, animated: true)
+	}
+
+	private func updateSelectedCategory(at index: Int) {
+		eventsCollectionView.visibleCells.forEach { cell in
+			guard let eventCell = cell as? EventsCollectionViewCell,
+				  let cellIndex = eventsCollectionView.indexPath(for: cell) else { return }
+			eventCell.updateSelection(isSelected: cellIndex.row == index)
 		}
-		.disposed(by: disposeBag)
 	}
 
 
 }
 
-extension HomeViewController: OddsTableViewCellDelegate {
-	func didSelectOddsItem(at index: Int, for cell: OddsTableViewCell) {
-		guard let cellIndex = oddsTableView.indexPath(for: cell) else { return }
-		print(index)
-		print(cellIndex)
-	}
-}
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+	func collectionView(_ collectionView: UICollectionView,
+						layout collectionViewLayout: UICollectionViewLayout,
+						sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: 80, height: 80)
+	}
+
+	func collectionView(_ collectionView: UICollectionView,
+						layout collectionViewLayout: UICollectionViewLayout,
+						minimumInteritemSpacing: CGFloat) -> CGFloat {
+		return 8
+	}
+
+	func collectionView(_ collectionView: UICollectionView,
+						layout collectionViewLayout: UICollectionViewLayout,
+						minimumLineSpacing: CGFloat) -> CGFloat {
+		return 8
 	}
 
 }

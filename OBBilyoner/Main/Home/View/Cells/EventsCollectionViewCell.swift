@@ -34,4 +34,11 @@ class EventsCollectionViewCell: UICollectionViewCell {
 		eventTitle.text = category.name
 	}
 
+	func updateSelection(isSelected: Bool) {
+			UIView.animate(withDuration: 0.2) {
+				self.backgroundColor = isSelected ? .systemBlue : .systemRed
+				self.layer.borderColor = isSelected ? UIColor.systemBlue.cgColor : UIColor.systemGray5.cgColor
+			}
+		}
+
 }
