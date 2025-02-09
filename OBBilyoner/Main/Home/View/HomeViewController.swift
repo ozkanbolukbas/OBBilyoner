@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
 
 	@IBOutlet weak var eventsCollectionView: UICollectionView!
 	@IBOutlet weak var oddsTableView: UITableView!
@@ -75,9 +75,12 @@ class HomeViewController: UIViewController {
 			.disposed(by: disposeBag)
 
 		viewModel.output.isLoading
-			.drive(onNext: { [weak self] isLoading in
-				if !isLoading {
-					self?.refreshControl.endRefreshing()
+			.drive(onNext: { [weak self] loading in
+				guard let self = self else { return }
+				if loading {
+					self.isLoading = true
+				} else {
+					self.isLoading = false
 				}
 			})
 			.disposed(by: disposeBag)
