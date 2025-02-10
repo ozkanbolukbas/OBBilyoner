@@ -109,7 +109,7 @@ class OddTableViewCell: UITableViewCell {
 		}
 
 		resetViews()
-		
+
 		outcomes.forEach { outcome in
 			switch outcome.name {
 			case item.homeTeam:
@@ -185,7 +185,6 @@ class OddTableViewCell: UITableViewCell {
 	private func updateViewSelection(_ view: UIView?, isSelected: Bool) {
 		UIView.animate(withDuration: 0.2) {
 			view?.backgroundColor = isSelected ? .primaryColor : .onIsland
-
 		}
 	}
 
