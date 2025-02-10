@@ -41,6 +41,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
 		//Configure tab bar appearance
 		self.tabBar.tintColor = .iconPrimary
+		self.tabBar.barTintColor = .globe
 		self.tabBar.unselectedItemTintColor = .iconSeconday
 		self.tabBar.backgroundColor = .globe
 		self.tabBar.isTranslucent = false
