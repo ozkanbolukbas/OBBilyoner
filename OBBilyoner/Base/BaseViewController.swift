@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
 	var isLoading: Bool {
@@ -27,13 +28,22 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
 		navigationController?.interactivePopGestureRecognizer?.delegate = self
 	}
 
-	func showErrorAlert(message: String) {
-		let alertController = UIAlertController(
-			title: "Error",
-			message: message,
-			preferredStyle: .alert
-		)
-		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-		self.present(alertController, animated: true, completion: nil)
+	func showErrorAlert(message: String) -> Observable<Void> {
+		return Observable.create { [weak self] observer in
+			let alertController = UIAlertController(
+				title: "Error",
+				message: message,
+				preferredStyle: .alert
+			)
+			let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+				observer.onNext(())
+				observer.onCompleted()
+			}
+			alertController.addAction(okAction)
+			self?.present(alertController, animated: true, completion: nil)
+			return Disposables.create {
+				alertController.dismiss(animated: true, completion: nil)
+			}
+		}
 	}
 }

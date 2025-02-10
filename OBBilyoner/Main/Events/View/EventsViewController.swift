@@ -214,10 +214,14 @@ class EventsViewController: BaseViewController {
 			.disposed(by: disposeBag)
 
 		viewModel.output.error
-			.drive(onNext: { [weak self] error in
-				guard let error = error else { return }
-				guard let self = self else { return }
-				self.showErrorAlert(message: error.localizedDescription)
+			.asObservable()
+			.compactMap { $0 }
+			.flatMapLatest { [weak self] error -> Observable<Void> in
+				guard let self = self else { return Observable.empty() }
+				return self.showErrorAlert(message: error.localizedDescription)
+			}
+			.subscribe(onNext: {
+				debugPrint("dismissed")
 			})
 			.disposed(by: disposeBag)
 	}
