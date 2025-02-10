@@ -35,6 +35,7 @@ class SelectedEventsViewController: BaseViewController {
 
 	private func setupUI() {
 		self.navigationController?.isNavigationBarHidden = true
+		view.backgroundColor = .globe
 		eventsCollectionView.register(cellType: EventsCollectionViewCell.self)
 		oddsTableView.register(cellType: OddTableViewCell.self)
 		oddsTableView.refreshControl = refreshControl
