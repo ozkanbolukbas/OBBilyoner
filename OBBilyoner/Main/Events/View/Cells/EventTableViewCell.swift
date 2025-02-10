@@ -13,6 +13,14 @@ class EventTableViewCell: UITableViewCell {
 	static let reuseIdentifier = "EventTableViewCell"
 
 	// MARK: - UI Elements
+	private let containerView: UIView = {
+		let view = UIView()
+		view.backgroundColor = .island
+		view.layer.cornerRadius = 8
+		view.layer.masksToBounds = true
+		return view
+	}()
+
 	private let emojiLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.systemFont(ofSize: 20)
@@ -24,13 +32,14 @@ class EventTableViewCell: UITableViewCell {
 		let label = UILabel()
 		label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
 		label.numberOfLines = 1
+		label.textColor = .textWhite
 		return label
 	}()
 
 	private let descriptionLabel: UILabel = {
 		let label = UILabel()
 		label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-		label.textColor = .secondaryLabel
+		label.textColor = .textTertiary
 		label.numberOfLines = 0
 		return label
 	}()
@@ -47,9 +56,15 @@ class EventTableViewCell: UITableViewCell {
 
 	// MARK: - UI Setup
 	private func setupUI() {
-		contentView.addSubview(emojiLabel)
-		contentView.addSubview(titleLabel)
-		contentView.addSubview(descriptionLabel)
+		contentView.addSubview(containerView)
+		contentView.backgroundColor = .globe
+		containerView.snp.makeConstraints { make in
+			make.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16))
+		}
+
+		containerView.addSubview(emojiLabel)
+		containerView.addSubview(titleLabel)
+		containerView.addSubview(descriptionLabel)
 
 		emojiLabel.snp.makeConstraints { make in
 			make.leading.equalToSuperview().offset(16)

@@ -17,7 +17,7 @@ class EventsViewController: BaseViewController {
 	// MARK: UI Elements
 	private let tableView: UITableView = {
 		let table = UITableView()
-		table.backgroundColor = .clear
+		table.backgroundColor = .globe
 		table.separatorStyle = .none
 		table.register(cellType: EventTableViewCell.self)
 		return table
@@ -53,7 +53,8 @@ class EventsViewController: BaseViewController {
 	// MARK: Setup UI
 	private func setupUI() {
 		view.addSubview(tableView)
-		view.backgroundColor = .systemBackground
+		view.backgroundColor = .globe
+
 
 		tableView.snp.makeConstraints { make in
 			make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
