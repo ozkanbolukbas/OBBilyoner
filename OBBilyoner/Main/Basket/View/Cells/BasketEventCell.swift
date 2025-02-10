@@ -15,7 +15,7 @@ class BasketEventCell: UITableViewCell {
 
 	var disposeBag = DisposeBag()
 
-	//  UI Elements
+	// MARK: UI Elements
 	private let containerView: UIView = {
 		let view = UIView()
 		view.backgroundColor = .systemGray6
@@ -71,7 +71,7 @@ class BasketEventCell: UITableViewCell {
 		currentEvent = nil
 	}
 
-	// Setup UI
+	// MARK: Setup UI
 	private func setupUI() {
 		selectionStyle = .none
 		backgroundColor = .clear
@@ -109,7 +109,7 @@ class BasketEventCell: UITableViewCell {
 		}
 	}
 
-	// Configure cell with data
+	// MARK: Configuration
 	func configure(with event: BasketModel) {
 		currentEvent = event
 		teamsLabel.text = "\(event.odd.homeTeam ?? "") vs \(event.odd.awayTeam ?? "")"

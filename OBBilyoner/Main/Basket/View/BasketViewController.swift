@@ -254,10 +254,7 @@ class BasketViewController: UIViewController {
 		viewModel.output.events
 			.drive(onNext: { [weak self] events in
 				guard let self = self else { return }
-				// If there are no events, show the empty view. Otherwise, hide it.
 				self.emptyDataView.isHidden = !events.isEmpty
-
-				// Optionally, reload your table view if needed:
 				self.tableView.reloadData()
 			})
 			.disposed(by: disposeBag)

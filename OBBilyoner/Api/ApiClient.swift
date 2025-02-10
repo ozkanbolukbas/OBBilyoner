@@ -31,7 +31,7 @@ class APIClient {
 			}
 
 		case .failure(let error):
-			if let data = response.data {
+			if response.data != nil {
 				single(.failure(APIError.unknown(error.localizedDescription)))
 			} else {
 				single(.failure(APIError.unknown("No response data.")))

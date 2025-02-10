@@ -48,7 +48,7 @@ class OddTableViewCell: UITableViewCell {
 		currentEvent = nil
 	}
 
-	// MARK: - UI Setup
+	// MARK: Setup UI
 	private func setupUI() {
 		contentView.backgroundColor = .globe
 		cellContentView.layer.cornerRadius = 10
@@ -93,7 +93,7 @@ class OddTableViewCell: UITableViewCell {
 		}
 	}
 
-	// MARK: - Configuration
+	// MARK: Configuration
 	func configure(with item: OddsResponse, basketUpdates: Driver<Set<String>>) {
 		currentEvent = item
 		teamsLabel.text = "\(item.homeTeam ?? "") - \(item.awayTeam ?? "")"

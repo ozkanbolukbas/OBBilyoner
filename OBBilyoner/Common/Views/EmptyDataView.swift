@@ -55,17 +55,13 @@ class EmptyDataView: UIView {
 		addSubview(messageLabel)
 		addSubview(actionButton)
 
-		// Set constraints for the messageLabel.
 		messageLabel.snp.makeConstraints { make in
 			make.centerX.equalToSuperview()
-			// If the button is visible, offset upward to make room for it.
-			// Otherwise, center the label vertically.
 			make.centerY.equalToSuperview().offset(actionButton.isHidden ? 0 : -20)
 			make.leading.greaterThanOrEqualToSuperview().offset(16)
 			make.trailing.lessThanOrEqualToSuperview().offset(-16)
 		}
 
-		// Set constraints for the actionButton.
 		actionButton.snp.makeConstraints { make in
 			make.centerX.equalToSuperview()
 			make.top.equalTo(messageLabel.snp.bottom).offset(16)
