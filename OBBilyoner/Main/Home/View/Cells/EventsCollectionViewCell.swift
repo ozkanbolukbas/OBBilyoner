@@ -23,7 +23,7 @@ class EventsCollectionViewCell: UICollectionViewCell {
 
 	// MARK: - UI Setup
 	func setupUI() {
-		cellContentView.backgroundColor = .systemRed
+		cellContentView.backgroundColor = .globe
 		eventTitle.textColor = .black
 		cellContentView.layer.cornerRadius = 20
 		cellContentView.layer.masksToBounds = true
@@ -39,8 +39,8 @@ class EventsCollectionViewCell: UICollectionViewCell {
 
 	func updateSelection(isSelected: Bool) {
 		UIView.animate(withDuration: 0.2) {
-			self.cellContentView.backgroundColor = isSelected ? .systemBlue : .systemRed
-			self.eventTitle.textColor = isSelected ? .white: .black
+			self.cellContentView.backgroundColor = isSelected ? .island : .globe
+			self.eventTitle.textColor = isSelected ? .white: .white
 
 		}
 	}
