@@ -20,6 +20,7 @@ class BasketEventCell: UITableViewCell {
 		let view = UIView()
 		view.backgroundColor = .systemGray6
 		view.layer.cornerRadius = 12
+		view.backgroundColor = .island
 		return view
 	}()
 
@@ -27,20 +28,21 @@ class BasketEventCell: UITableViewCell {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .medium)
 		label.numberOfLines = 2
+		label.textColor = .textWhite
 		return label
 	}()
 
 	private let timeLabel: UILabel = {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 14)
-		label.textColor = .secondaryLabel
+		label.textColor = .textTertiary
 		return label
 	}()
 
 	private let oddsLabel: UILabel = {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .bold)
-		label.textColor = .systemBlue
+		label.textColor = .primaryColor
 		return label
 	}()
 
