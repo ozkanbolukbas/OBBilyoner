@@ -59,6 +59,7 @@
 		7C62A7012D5A2C1000E25F4F /* EventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A7002D5A2C0A00E25F4F /* EventResponse.swift */; };
 		7C62A7042D5A322A00E25F4F /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A7032D5A321A00E25F4F /* EventTableViewCell.swift */; };
 		7C62A7062D5A453A00E25F4F /* CollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A7052D5A453400E25F4F /* CollectionExt.swift */; };
+		7C62A70A2D5A4DDE00E25F4F /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A7092D5A4DDA00E25F4F /* ColorExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		7C62A7002D5A2C0A00E25F4F /* EventResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResponse.swift; sourceTree = "<group>"; };
 		7C62A7032D5A321A00E25F4F /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		7C62A7052D5A453400E25F4F /* CollectionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExt.swift; sourceTree = "<group>"; };
+		7C62A7092D5A4DDA00E25F4F /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -350,6 +352,7 @@
 		7C62A6B92D58A0D400E25F4F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7C62A7092D5A4DDA00E25F4F /* ColorExt.swift */,
 				7C62A7052D5A453400E25F4F /* CollectionExt.swift */,
 				7C62A6FA2D5A219200E25F4F /* StringExt.swift */,
 				7C62A6D62D58EADB00E25F4F /* ArrayExt.swift */,
@@ -659,6 +662,7 @@
 				7C62A69B2D577BDB00E25F4F /* Enviroment.swift in Sources */,
 				7C62A5EA2D575A5400E25F4F /* TabBarViewController.swift in Sources */,
 				7C62A6A52D578B1000E25F4F /* OddsResponse.swift in Sources */,
+				7C62A70A2D5A4DDE00E25F4F /* ColorExt.swift in Sources */,
 				7C62A6DA2D58EF0B00E25F4F /* BasketEventCell.swift in Sources */,
 				7C62A6942D577B3300E25F4F /* ApiClient.swift in Sources */,
 				7C62A6BD2D58AE9800E25F4F /* UICollectionViewExt.swift in Sources */,
