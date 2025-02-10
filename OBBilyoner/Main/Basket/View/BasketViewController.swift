@@ -16,7 +16,7 @@ class BasketViewController: UIViewController {
 	// MARK: UI Elements
 	private let tableView: UITableView = {
 		let table = UITableView()
-		table.backgroundColor = .clear
+		table.backgroundColor = .globe
 		table.separatorStyle = .none
 		table.register(cellType: BasketEventCell.self)
 		return table
@@ -24,8 +24,8 @@ class BasketViewController: UIViewController {
 
 	private let totalView: UIView = {
 		let view = UIView()
-		view.backgroundColor = .systemBackground
-		view.layer.shadowColor = UIColor.black.cgColor
+		view.backgroundColor = .island
+		view.layer.shadowColor = UIColor.white.cgColor
 		view.layer.shadowOffset = CGSize(width: 0, height: -2)
 		view.layer.shadowOpacity = 0.1
 		view.layer.shadowRadius = 4
@@ -36,6 +36,7 @@ class BasketViewController: UIViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .medium)
 		label.text = "Total:"
+		label.textColor = .textWhite
 		return label
 	}()
 
@@ -50,7 +51,7 @@ class BasketViewController: UIViewController {
 		let button = UIButton(type: .system)
 		button.setTitle("HEMEN OYNA", for: .normal)
 		button.titleLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
-		button.backgroundColor = .systemBlue
+		button.backgroundColor = .primaryColor
 		button.setTitleColor(.white, for: .normal)
 		button.layer.cornerRadius = 8
 		return button
@@ -61,6 +62,7 @@ class BasketViewController: UIViewController {
 		stack.axis = .horizontal
 		stack.distribution = .fillEqually
 		stack.spacing = 8
+		stack.backgroundColor = .clear
 		return stack
 	}()
 
@@ -68,6 +70,7 @@ class BasketViewController: UIViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .medium)
 		label.text = "Kupon Bedeli:"
+		label.textColor = .textWhite
 		return label
 	}()
 
@@ -75,6 +78,7 @@ class BasketViewController: UIViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .bold)
 		label.text = "0.00 TL"
+		label.textColor = .textWhite
 		return label
 	}()
 
@@ -82,6 +86,7 @@ class BasketViewController: UIViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .medium)
 		label.text = "Toplam Oran:"
+		label.textColor = .textWhite
 		return label
 	}()
 
@@ -89,6 +94,7 @@ class BasketViewController: UIViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .bold)
 		label.text = "0.00"
+		label.textColor = .textWhite
 		return label
 	}()
 
@@ -96,6 +102,7 @@ class BasketViewController: UIViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .medium)
 		label.text = "Maks. Kazanç:"
+		label.textColor = .textWhite
 		return label
 	}()
 
@@ -103,6 +110,7 @@ class BasketViewController: UIViewController {
 		let label = UILabel()
 		label.font = .systemFont(ofSize: 16, weight: .bold)
 		label.text = "0.00 TL"
+		label.textColor = .textWhite
 		return label
 	}()
 
@@ -124,7 +132,7 @@ class BasketViewController: UIViewController {
 
 	// MARK: Setup UI
 	private func setupUI() {
-		view.backgroundColor = .systemBackground
+		view.backgroundColor = .globe
 		title = "Basket"
 
 		let quickBetAmounts = [50, 100, 500, 1000, 7500]
@@ -132,8 +140,8 @@ class BasketViewController: UIViewController {
 			let button = UIButton(type: .system)
 			button.setTitle("+\(amount)", for: .normal)
 			button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
-			button.backgroundColor = .systemGray6
-			button.setTitleColor(.label, for: .normal)
+			button.backgroundColor = .island
+			button.setTitleColor(.white, for: .normal)
 			button.layer.cornerRadius = 4
 			quickBetStackView.addArrangedSubview(button)
 		}
