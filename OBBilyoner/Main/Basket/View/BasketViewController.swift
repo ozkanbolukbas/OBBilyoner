@@ -271,6 +271,6 @@ class BasketViewController: UIViewController {
 	}
 }
 
-#Preview {
-	BasketViewController(viewModel: BasketViewModel.shared)
-}
+//#Preview {
+//	BasketViewController(viewModel: BasketViewModel.shared)
+//}

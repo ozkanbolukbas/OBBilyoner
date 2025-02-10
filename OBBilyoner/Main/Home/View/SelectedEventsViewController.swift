@@ -173,7 +173,6 @@ extension SelectedEventsViewController: UITableViewDelegate {
 	}
 }
 
-
-#Preview {
-	SelectedEventsViewController(viewModel: SelectedEventsViewModel())
-}
+//#Preview {
+//	SelectedEventsViewController(viewModel: SelectedEventsViewModel())
+//}
