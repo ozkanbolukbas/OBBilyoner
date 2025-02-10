@@ -14,10 +14,19 @@ class HomeViewController: BaseViewController {
 	@IBOutlet weak var eventsCollectionView: UICollectionView!
 	@IBOutlet weak var oddsTableView: UITableView!
 
-	let viewModel = HomeViewModel()
+	let viewModel: HomeViewModel
 	let disposeBag = DisposeBag()
 	private let refreshControl = UIRefreshControl()
 
+	init(viewModel: HomeViewModel) {
+		self.viewModel = viewModel
+		super.init(nibName: nil, bundle: nil)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
@@ -149,5 +158,5 @@ extension HomeViewController: UITableViewDelegate {
 
 
 #Preview {
-	HomeViewController()
+	HomeViewController(viewModel: HomeViewModel())
 }
