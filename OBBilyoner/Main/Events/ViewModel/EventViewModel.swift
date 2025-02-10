@@ -32,13 +32,12 @@ class EventsViewModel: ViewModelType {
 
 		// MARK: - Private Properties
 		private let disposeBag = DisposeBag()
+		private let analticsManager: AnalyticsManager
 
 		// Subjects for input actions.
 		private let viewDidLoadSubject = PublishSubject<Void>()
 		private let selectRowSubject = PublishSubject<IndexPath>()
 		private let searchTextSubject = BehaviorSubject<String>(value: "")
-
-
 
 		// Relays to hold state.
 		private let eventsRelay = BehaviorRelay<[EventResponse]>(value: [])
@@ -48,7 +47,8 @@ class EventsViewModel: ViewModelType {
 		private let filteredEventsRelay = BehaviorRelay<[EventResponse]>(value: [])
 
 		// MARK: - Initialization
-		init() {
+		init(analyticsManager: AnalyticsManager = AnalyticsManager.shared) {
+			analticsManager = analyticsManager
 			// Setup inputs.
 			self.input = Input(
 				viewDidLoad: viewDidLoadSubject.asObserver(),
@@ -81,9 +81,11 @@ class EventsViewModel: ViewModelType {
 			selectRowSubject
 				.withLatestFrom(eventsRelay) { (indexPath, events) -> EventResponse? in
 					guard events.indices.contains(indexPath.row) else { return nil }
-					return events[indexPath.row]
+					let event = events[indexPath.row]
+					self.analticsManager.log(.eventDetail(title: event.title ?? "", description: event.description ?? "", key: event.key ?? ""))
+					return event
 				}
-				.compactMap { $0 }  // Ignore nil values.
+				.compactMap { $0 }
 				.map { $0.key ?? "" }
 				.bind(to: selectedEventKeyRelay)
 				.disposed(by: disposeBag)

@@ -26,7 +26,7 @@ enum AnalyticsEventType {
 	case addBetToCart(id: String, homeTeam: String, awayTeam: String, bet: String)
 	case removeBetFromCart(id: String, homeTeam: String, awayTeam: String, bet: String)
 	case updateBetFromCart(id: String, homeTeam: String, awayTeam: String, bet: String)
-	case matchDetail(text: String)
+	case eventDetail(title: String, description: String, key: String)
 
 }
 
@@ -37,7 +37,7 @@ extension AnalyticsEventType {
 		case .addBetToCart: return "add_bet_to_cart"
 		case .removeBetFromCart: return "remove_bet_from_cart"
 		case .updateBetFromCart: return "update_bet_from_cart"
-		case .matchDetail: return "match_detail"
+		case .eventDetail: return "event_detail"
 		}
 	}
 
@@ -52,8 +52,12 @@ extension AnalyticsEventType {
 				"away_team": awayTeam,
 				"bet": bet
 			]
-		case .matchDetail(let text):
-			return ["text": text]
+		case .eventDetail(let title, let description, let key):
+			return [
+				"title": title,
+				"description": description,
+				"key": key
+			]
 		}
 	}
 }
