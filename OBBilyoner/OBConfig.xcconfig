@@ -14,4 +14,4 @@ ENVIROMENT_CONFIGURATION = Development
 BASE_URL = https:/$()/api.the-odds-api.com/v4/
 
 // Api Key
-API_KEY = 4da14776127bba63ee7849fa1b698017
+API_KEY = 54161b2a7ab701776124c9da56b25b35

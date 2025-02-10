@@ -9,12 +9,15 @@ import Foundation
 import Alamofire
 
 enum APIRouter: URLRequestConvertible {
+	case getEvents
 	case getOdds(type: String, params: OddsRequest)
 
 
 	// MARK: - HTTPMethod
 	private var method: HTTPMethod {
 		switch self {
+		case .getEvents:
+			return .get
 		case .getOdds:
 			return .get
 		}
@@ -23,6 +26,8 @@ enum APIRouter: URLRequestConvertible {
 	// MARK: - Path
 	private var path: String {
 		switch self {
+		case .getEvents:
+			return "sports"
 		case .getOdds(let type, _):
 			return "sports/\(type)/odds"
 		}

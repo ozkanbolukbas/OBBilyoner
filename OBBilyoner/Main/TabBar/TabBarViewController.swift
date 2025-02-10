@@ -28,9 +28,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 		// Create view controllers for each tab
 		let homeVM = HomeViewModel()
 		let homeVC = HomeViewController(viewModel: homeVM)
-		let basketVC = HomeViewController(viewModel: homeVM)
 		let basketVM = BasketViewModel.shared
-		let eventsVC = BasketViewController(viewModel: basketVM)
+		let basketVC = BasketViewController(viewModel: basketVM)
+		let eventsVM = EventsViewModel()
+		let eventsVC = EventsViewController(viewModel: eventsVM)
 
 		// Set the view controllers for tab bar
 		homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
@@ -42,33 +43,63 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 		self.tabBar.tintColor = .systemBlue
 		self.tabBar.backgroundColor = .systemBackground
 
-		// Create custom basket button
-		let basketButton = UIButton(frame: CGRect(x: 0, y: 0, width: 64, height: 64))
+		// Create custom basket button.
+		let basketButton = UIButton()
 		basketButton.backgroundColor = .systemBlue
-		basketButton.layer.cornerRadius = 32
+		basketButton.layer.cornerRadius = 40
 		basketButton.layer.masksToBounds = true
-		basketButton.center = CGPoint(x: self.tabBar.center.x, y: 20)
 		basketButton.tintColor = .white
 
-		// Create labels for match count and total price
-		matchCountLabel = UILabel(frame: CGRect(x: 0, y: 12, width: 64, height: 20))
+		// Add target-action so that tapping the button presents the BasketViewController.
+		basketButton.addTarget(self, action: #selector(basketButtonTapped), for: .touchUpInside)
+
+		// Create labels for match count and total odds.
+		matchCountLabel = UILabel()
 		matchCountLabel.textAlignment = .center
 		matchCountLabel.font = .systemFont(ofSize: 14, weight: .bold)
 		matchCountLabel.textColor = .white
 		matchCountLabel.text = "0"
 
-		totalOddsLabel = UILabel(frame: CGRect(x: 0, y: 32, width: 64, height: 20))
+		totalOddsLabel = UILabel()
 		totalOddsLabel.textAlignment = .center
 		totalOddsLabel.font = .systemFont(ofSize: 12, weight: .medium)
+		totalOddsLabel.minimumScaleFactor = 0.8
 		totalOddsLabel.textColor = .white
 		totalOddsLabel.text = "0.00"
 
+		// Add subviews.
 		basketButton.addSubview(matchCountLabel)
 		basketButton.addSubview(totalOddsLabel)
-
-		//Add basket button to tab bar
 		self.tabBar.addSubview(basketButton)
 
+		// Use SnapKit to layout the basket button in the tab bar.
+		basketButton.snp.makeConstraints { make in
+			make.centerX.equalTo(self.tabBar.snp.centerX)
+			make.top.equalTo(self.tabBar.snp.top).offset(-20)
+			make.width.height.equalTo(80)
+		}
+
+		// Layout the labels within the basket button.
+		matchCountLabel.snp.makeConstraints { make in
+			make.top.equalToSuperview().offset(12)
+			make.centerX.equalToSuperview()
+			make.height.equalTo(20)
+		}
+		totalOddsLabel.snp.makeConstraints { make in
+			make.top.equalTo(matchCountLabel.snp.bottom).offset(4)
+			make.centerX.equalToSuperview()
+			make.height.equalTo(20)
+		}
+
+	}
+
+	@objc private func basketButtonTapped() {
+		// Create BasketViewController and present it modally.
+		let basketVM = BasketViewModel.shared
+		let basketVC = BasketViewController(viewModel: basketVM)
+		let navController = UINavigationController(rootViewController: basketVC)
+		navController.modalPresentationStyle = .pageSheet
+		self.present(navController, animated: true, completion: nil)
 	}
 
 	func bindBasketViewModel() {

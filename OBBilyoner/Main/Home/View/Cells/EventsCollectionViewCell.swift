@@ -21,6 +21,7 @@ class EventsCollectionViewCell: UICollectionViewCell {
 		setupUI()
 	}
 
+	// MARK: - UI Setup
 	func setupUI() {
 		cellContentView.backgroundColor = .systemRed
 		eventTitle.textColor = .black
@@ -29,6 +30,7 @@ class EventsCollectionViewCell: UICollectionViewCell {
 		cellContentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 	}
 
+	// MARK: - Configuration
 	func configure(with category: EventCategory) {
 		eventImage.image = UIImage(named: category.imageName)
 		eventTitle.text = category.name

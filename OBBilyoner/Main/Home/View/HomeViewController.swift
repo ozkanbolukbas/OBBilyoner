@@ -99,7 +99,6 @@ class HomeViewController: BaseViewController {
 			})
 			.disposed(by: disposeBag)
 
-		// Bind errors
 		viewModel.output.error
 			.drive(onNext: { [weak self] error in
 				guard let error = error else { return }
@@ -107,6 +106,7 @@ class HomeViewController: BaseViewController {
 				self.showErrorAlert(message: error.localizedDescription)
 			})
 			.disposed(by: disposeBag)
+		
 		viewModel.output.selectedCategoryIndex
 			.drive(onNext: { [weak self] index in
 				guard let self = self else { return }

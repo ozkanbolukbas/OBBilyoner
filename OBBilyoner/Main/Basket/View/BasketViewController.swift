@@ -18,7 +18,7 @@ class BasketViewController: UIViewController {
 		let table = UITableView()
 		table.backgroundColor = .clear
 		table.separatorStyle = .none
-		table.register(BasketEventCell.self, forCellReuseIdentifier: BasketEventCell.reuseIdentifier)
+		table.register(cellType: BasketEventCell.self)
 		return table
 	}()
 
@@ -106,6 +106,7 @@ class BasketViewController: UIViewController {
 		return label
 	}()
 
+	// MARK: - Initialization
 	init(viewModel: BasketViewModel) {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
@@ -191,7 +192,6 @@ class BasketViewController: UIViewController {
 	// MARK: - Bind ViewModel
 
 	private func bindViewModel() {
-		// Bind basket events to the table view.
 		viewModel.output.events
 			.drive(tableView.rx
 				.items(cellIdentifier: BasketEventCell.reuseIdentifier,

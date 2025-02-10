@@ -51,6 +51,14 @@
 		7C62A6ED2D5A157A00E25F4F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7C62A6EC2D5A157A00E25F4F /* FirebaseCrashlytics */; };
 		7C62A6EF2D5A15DA00E25F4F /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6EE2D5A15CE00E25F4F /* AnalyticsManager.swift */; };
 		7C62A6F22D5A18CC00E25F4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C62A6F12D5A18CC00E25F4F /* GoogleService-Info.plist */; };
+		7C62A6F52D5A208E00E25F4F /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6F42D5A208300E25F4F /* EventsViewController.swift */; };
+		7C62A6F92D5A212B00E25F4F /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6F82D5A212600E25F4F /* EventViewModel.swift */; };
+		7C62A6FB2D5A219700E25F4F /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6FA2D5A219200E25F4F /* StringExt.swift */; };
+		7C62A6FD2D5A270300E25F4F /* EventsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6FC2D5A26F900E25F4F /* EventsDetailViewController.swift */; };
+		7C62A6FF2D5A271000E25F4F /* EventDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A6FE2D5A270700E25F4F /* EventDetailViewModel.swift */; };
+		7C62A7012D5A2C1000E25F4F /* EventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A7002D5A2C0A00E25F4F /* EventResponse.swift */; };
+		7C62A7042D5A322A00E25F4F /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A7032D5A321A00E25F4F /* EventTableViewCell.swift */; };
+		7C62A7062D5A453A00E25F4F /* CollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62A7052D5A453400E25F4F /* CollectionExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +119,14 @@
 		7C62A6E62D5948F800E25F4F /* obLoading.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = obLoading.json; sourceTree = "<group>"; };
 		7C62A6EE2D5A15CE00E25F4F /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		7C62A6F12D5A18CC00E25F4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7C62A6F42D5A208300E25F4F /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		7C62A6F82D5A212600E25F4F /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		7C62A6FA2D5A219200E25F4F /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		7C62A6FC2D5A26F900E25F4F /* EventsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDetailViewController.swift; sourceTree = "<group>"; };
+		7C62A6FE2D5A270700E25F4F /* EventDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewModel.swift; sourceTree = "<group>"; };
+		7C62A7002D5A2C0A00E25F4F /* EventResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResponse.swift; sourceTree = "<group>"; };
+		7C62A7032D5A321A00E25F4F /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		7C62A7052D5A453400E25F4F /* CollectionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -221,6 +237,7 @@
 		7C62A5E72D5759DB00E25F4F /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7C62A6F32D5A1FB100E25F4F /* Events */,
 				7C62A5E82D575A4000E25F4F /* TabBar */,
 				7C62A5EB2D575B0100E25F4F /* Home */,
 				7C62A6CD2D58D77000E25F4F /* Basket */,
@@ -278,6 +295,7 @@
 		7C62A69F2D5788EE00E25F4F /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				7C62A7002D5A2C0A00E25F4F /* EventResponse.swift */,
 				7C62A6A42D578B0700E25F4F /* OddsResponse.swift */,
 			);
 			path = Response;
@@ -332,6 +350,8 @@
 		7C62A6B92D58A0D400E25F4F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7C62A7052D5A453400E25F4F /* CollectionExt.swift */,
+				7C62A6FA2D5A219200E25F4F /* StringExt.swift */,
 				7C62A6D62D58EADB00E25F4F /* ArrayExt.swift */,
 				7C62A6C42D58C36A00E25F4F /* UITableViewExt.swift */,
 				7C62A6BE2D58AED600E25F4F /* NSObjectExt.swift */,
@@ -413,6 +433,42 @@
 				7C62A6F12D5A18CC00E25F4F /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7C62A6F32D5A1FB100E25F4F /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A6F72D5A211E00E25F4F /* ViewModel */,
+				7C62A6F62D5A211200E25F4F /* View */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		7C62A6F62D5A211200E25F4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A7022D5A320F00E25F4F /* Cells */,
+				7C62A6FC2D5A26F900E25F4F /* EventsDetailViewController.swift */,
+				7C62A6F42D5A208300E25F4F /* EventsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7C62A6F72D5A211E00E25F4F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A6FE2D5A270700E25F4F /* EventDetailViewModel.swift */,
+				7C62A6F82D5A212600E25F4F /* EventViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7C62A7022D5A320F00E25F4F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7C62A7032D5A321A00E25F4F /* EventTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,16 +638,23 @@
 				7C62A6BB2D58A10200E25F4F /* ReactiveExt.swift in Sources */,
 				7C62A5EF2D575B2900E25F4F /* HomeViewController.swift in Sources */,
 				7C62A5E42D57599300E25F4F /* AppDelegate.swift in Sources */,
+				7C62A6F52D5A208E00E25F4F /* EventsViewController.swift in Sources */,
+				7C62A6FD2D5A270300E25F4F /* EventsDetailViewController.swift in Sources */,
 				7C62A6D32D58D7F300E25F4F /* BasketViewModel.swift in Sources */,
 				7C62A6BF2D58AEDF00E25F4F /* NSObjectExt.swift in Sources */,
+				7C62A6FB2D5A219700E25F4F /* StringExt.swift in Sources */,
 				7C62A6E42D59488200E25F4F /* BaseViewController.swift in Sources */,
 				7C62A6922D577B1C00E25F4F /* ApiRouter.swift in Sources */,
 				7C62A6A32D57891200E25F4F /* OddsRequest.swift in Sources */,
+				7C62A7062D5A453A00E25F4F /* CollectionExt.swift in Sources */,
 				7C62A6EF2D5A15DA00E25F4F /* AnalyticsManager.swift in Sources */,
 				7C62A5E52D57599300E25F4F /* SceneDelegate.swift in Sources */,
 				7C62A6B82D587FD800E25F4F /* EventCategory.swift in Sources */,
 				7C62A6CF2D58D78F00E25F4F /* BasketViewController.swift in Sources */,
+				7C62A6F92D5A212B00E25F4F /* EventViewModel.swift in Sources */,
 				7C62A6962D577B6300E25F4F /* APIError.swift in Sources */,
+				7C62A6FF2D5A271000E25F4F /* EventDetailViewModel.swift in Sources */,
+				7C62A7042D5A322A00E25F4F /* EventTableViewCell.swift in Sources */,
 				7C62A6E12D59482B00E25F4F /* LoadingView.swift in Sources */,
 				7C62A69B2D577BDB00E25F4F /* Enviroment.swift in Sources */,
 				7C62A5EA2D575A5400E25F4F /* TabBarViewController.swift in Sources */,
@@ -601,6 +664,7 @@
 				7C62A6BD2D58AE9800E25F4F /* UICollectionViewExt.swift in Sources */,
 				7C62A6D72D58EADF00E25F4F /* ArrayExt.swift in Sources */,
 				7C62A6992D577BCF00E25F4F /* Constants.swift in Sources */,
+				7C62A7012D5A2C1000E25F4F /* EventResponse.swift in Sources */,
 				7C62A6D52D58DEE700E25F4F /* BasketModel.swift in Sources */,
 				7C62A6B62D587CED00E25F4F /* EventsCollectionViewCell.swift in Sources */,
 				7C62A6C52D58C37600E25F4F /* UITableViewExt.swift in Sources */,
