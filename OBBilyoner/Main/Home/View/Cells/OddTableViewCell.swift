@@ -50,12 +50,15 @@ class OddTableViewCell: UITableViewCell {
 
 	// MARK: - UI Setup
 	private func setupUI() {
+		contentView.backgroundColor = .globe
 		cellContentView.layer.cornerRadius = 10
 		cellContentView.clipsToBounds = true
+		cellContentView.backgroundColor = .island
+		teamsLabel.textColor = .textWhite
 
 		let views = [firstTeamView, secondTeamView, drawView]
 		views.forEach { view in
-			view?.layer.borderColor = UIColor.black.cgColor
+			view?.layer.borderColor = UIColor.globe.cgColor
 			view?.layer.borderWidth = 1.0
 			view?.layer.cornerRadius = 10
 			view?.clipsToBounds = true
@@ -161,7 +164,7 @@ class OddTableViewCell: UITableViewCell {
 	private func resetViews() {
 		[firstTeamView, secondTeamView, drawView].forEach { view in
 			view?.isHidden = true
-			view?.backgroundColor = .white
+			view?.backgroundColor = .onIsland
 		}
 	}
 
@@ -175,12 +178,14 @@ class OddTableViewCell: UITableViewCell {
 		view?.isHidden = false
 		oddLabel.text = String(format: "%.2f", price ?? 0.0)
 		infoLabel.text = info
+		oddLabel.textColor = .textWhite
 	}
 
 	// Animate odd selection
 	private func updateViewSelection(_ view: UIView?, isSelected: Bool) {
 		UIView.animate(withDuration: 0.2) {
-			view?.backgroundColor = isSelected ? .systemBlue : .white
+			view?.backgroundColor = isSelected ? .primaryColor : .onIsland
+
 		}
 	}
 
