@@ -87,7 +87,7 @@ class EventDetailViewModel: ViewModelType {
 
 	private func fetchEvents(for sportKey: String) {
 		loadingRelay.accept(true)
-		APIClient.request(route: APIRouter.getOdds(type: sportKey, params: OddsRequest(markets: "h2h", regions: "eu")))
+		APIClient.request(route: APIRouter.getOdds(type: sportKey, params: OddsRequest(markets: "h2h", regions: "eu,us,us2,uk,au")))
 			.subscribe(onSuccess: { [weak self] (oddsResponse: [OddsResponse]) in
 				guard let self = self else { return }
 				self.loadingRelay.accept(false)

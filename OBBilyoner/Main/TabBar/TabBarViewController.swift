@@ -50,7 +50,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 		basketButton.layer.masksToBounds = true
 		basketButton.tintColor = .white
 
-		// Add target-action so that tapping the button presents the BasketViewController.
 		basketButton.addTarget(self, action: #selector(basketButtonTapped), for: .touchUpInside)
 
 		// Create labels for match count and total odds.
@@ -67,19 +66,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 		totalOddsLabel.textColor = .white
 		totalOddsLabel.text = "0.00"
 
-		// Add subviews.
 		basketButton.addSubview(matchCountLabel)
 		basketButton.addSubview(totalOddsLabel)
 		self.tabBar.addSubview(basketButton)
 
-		// Use SnapKit to layout the basket button in the tab bar.
 		basketButton.snp.makeConstraints { make in
 			make.centerX.equalTo(self.tabBar.snp.centerX)
 			make.top.equalTo(self.tabBar.snp.top).offset(-20)
 			make.width.height.equalTo(80)
 		}
 
-		// Layout the labels within the basket button.
 		matchCountLabel.snp.makeConstraints { make in
 			make.top.equalToSuperview().offset(12)
 			make.centerX.equalToSuperview()
@@ -104,15 +100,12 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
 	func bindBasketViewModel() {
 		// Bind the count of basket events to matchCountLabel.
-		// The BasketViewModel.shared.output.events is a Driver<[BasketModel]>.
-		// We map the array to its count and convert it to a String.
 		BasketViewModel.shared.output.events
-			.map { "\($0.count)" }
+			.map { "\($0.count) Maç" }
 			.drive(matchCountLabel.rx.text)
 			.disposed(by: disposeBag)
 
 		// Bind total odds to the totalOddsLabel.
-		// totalOdds is already a Driver<String> formatted to two decimals.
 		BasketViewModel.shared.output.totalOdds
 			.drive(totalOddsLabel.rx.text)
 			.disposed(by: disposeBag)
