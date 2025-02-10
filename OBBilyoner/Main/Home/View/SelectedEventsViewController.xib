@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="OBBilyoner" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectedEventsViewController" customModule="OBBilyoner" customModuleProvider="target">
             <connections>
                 <outlet property="eventsCollectionView" destination="GE9-g2-OQ4" id="Km3-8W-GXt"/>
                 <outlet property="oddsTableView" destination="d8N-dT-jYg" id="v8M-Kp-5Ui"/>

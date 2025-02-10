@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  SelectedEventsViewModel.swift
 //  OBBilyoner
 //
 //  Created by Özkan Bölükbaş on 8.02.2025.
@@ -9,7 +9,7 @@ import RxSwift
 import RxCocoa
 import Foundation
 
-class HomeViewModel: ViewModelType {
+class SelectedEventsViewModel: ViewModelType {
 
 	// MARK: - Input / Output Types
 	struct Input {

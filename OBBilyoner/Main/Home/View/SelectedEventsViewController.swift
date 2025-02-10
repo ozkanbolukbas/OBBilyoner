@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  SelectedEventsViewController.swift
 //  OBBilyoner
 //
 //  Created by Özkan Bölükbaş on 8.02.2025.
@@ -9,16 +9,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeViewController: BaseViewController {
+class SelectedEventsViewController: BaseViewController {
 
 	@IBOutlet weak var eventsCollectionView: UICollectionView!
 	@IBOutlet weak var oddsTableView: UITableView!
 
-	let viewModel: HomeViewModel
+	let viewModel: SelectedEventsViewModel
 	let disposeBag = DisposeBag()
 	private let refreshControl = UIRefreshControl()
 
-	init(viewModel: HomeViewModel) {
+	init(viewModel: SelectedEventsViewModel) {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -129,7 +129,7 @@ class HomeViewController: BaseViewController {
 }
 
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension SelectedEventsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView,
 						layout collectionViewLayout: UICollectionViewLayout,
 						sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -150,7 +150,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegate
 
 }
 
-extension HomeViewController: UITableViewDelegate {
+extension SelectedEventsViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 120
 	}
@@ -158,5 +158,5 @@ extension HomeViewController: UITableViewDelegate {
 
 
 #Preview {
-	HomeViewController(viewModel: HomeViewModel())
+	SelectedEventsViewController(viewModel: SelectedEventsViewModel())
 }

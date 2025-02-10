@@ -26,8 +26,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
 	func setupViews() {
 		// Create view controllers for each tab
-		let homeVM = HomeViewModel()
-		let homeVC = HomeViewController(viewModel: homeVM)
+		let homeVM = SelectedEventsViewModel()
+		let homeVC = SelectedEventsViewController(viewModel: homeVM)
 		let basketVM = BasketViewModel.shared
 		let basketVC = BasketViewController(viewModel: basketVM)
 		let eventsVM = EventsViewModel()
