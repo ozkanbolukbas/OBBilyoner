@@ -133,7 +133,13 @@ class BasketViewController: UIViewController {
 	// MARK: Setup UI
 	private func setupUI() {
 		view.backgroundColor = .globe
-		title = "Basket"
+		let titleLabel = UILabel()
+		titleLabel.text = "Basket"
+		titleLabel.backgroundColor = .clear
+		titleLabel.textColor = .textWhite
+		titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+		titleLabel.textAlignment = .center
+		self.navigationItem.titleView = titleLabel
 
 		let quickBetAmounts = [50, 100, 500, 1000, 7500]
 		quickBetAmounts.forEach { amount in
