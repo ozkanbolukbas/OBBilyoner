@@ -24,7 +24,7 @@ class HomeViewModel: ViewModelType {
 		let events: Driver<[OddsResponse]>
 		let basketUpdates: Driver<Set<String>>
 		let isLoading: Driver<Bool>
-		let error: Driver<Error?>
+		let error: Driver<APIError?>
 		let selectedCategoryIndex: Driver<Int>
 	}
 
@@ -45,7 +45,7 @@ class HomeViewModel: ViewModelType {
 	private let eventsRelay = BehaviorRelay<[OddsResponse]>(value: [])
 	private let categoriesRelay = BehaviorRelay<[EventCategory]>(value: EventCategory.categories)
 	private let loadingRelay = BehaviorRelay<Bool>(value: false)
-	private let errorRelay = BehaviorRelay<Error?>(value: nil)
+	private let errorRelay = BehaviorRelay<APIError?>(value: nil)
 	private let selectedCategoryIndexRelay = BehaviorRelay<Int>(value: 0)
 
 	// MARK: - Initialization
@@ -128,7 +128,7 @@ class HomeViewModel: ViewModelType {
 			}, onFailure: { [weak self] error in
 				guard let self = self else { return }
 				self.loadingRelay.accept(false)
-				self.errorRelay.accept(error)
+				self.errorRelay.accept((error as? APIError))
 				debugPrint("Error fetching odds:", error)
 			})
 			.disposed(by: disposeBag)

@@ -20,6 +20,11 @@ class HomeViewController: BaseViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setupUI()
+
+	}
+
+	private func setupUI() {
 		self.navigationController?.isNavigationBarHidden = true
 		eventsCollectionView.register(cellType: EventsCollectionViewCell.self)
 		oddsTableView.register(cellType: OddTableViewCell.self)
@@ -29,7 +34,7 @@ class HomeViewController: BaseViewController {
 	}
 
 	// MARK: - Bind ViewModel
-	func bindViewModel() {
+	private func bindViewModel() {
 		refreshControl.rx.controlEvent(.valueChanged)
 			.bind(to: viewModel.input.refresh)
 			.disposed(by: disposeBag)
@@ -89,7 +94,8 @@ class HomeViewController: BaseViewController {
 		viewModel.output.error
 			.drive(onNext: { [weak self] error in
 				guard let error = error else { return }
-				self?.showError(error)
+				guard let self = self else { return }
+				self.showErrorAlert(message: error.localizedDescription)
 			})
 			.disposed(by: disposeBag)
 		viewModel.output.selectedCategoryIndex
@@ -100,16 +106,6 @@ class HomeViewController: BaseViewController {
 				}
 			})
 			.disposed(by: disposeBag)
-	}
-
-	private func showError(_ error: Error) {
-		let alert = UIAlertController(
-			title: "Error",
-			message: error.localizedDescription,
-			preferredStyle: .alert
-		)
-		alert.addAction(UIAlertAction(title: "OK", style: .default))
-		present(alert, animated: true)
 	}
 
 	private func updateSelectedCategory(at index: Int) {
