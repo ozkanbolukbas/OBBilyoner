@@ -11,24 +11,36 @@ class EventsCollectionViewCell: UICollectionViewCell {
 
 	static let reuseId = "EventsCollectionViewCell"
 
+	@IBOutlet weak var cellContentView: UIView!
 	@IBOutlet weak var eventImage: UIImageView!
 
 	@IBOutlet weak var eventTitle: UILabel!
-	
+
 	override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+		super.awakeFromNib()
+		setupUI()
+	}
+
+	func setupUI() {
+		cellContentView.backgroundColor = .systemRed
+		eventTitle.textColor = .black
+		cellContentView.layer.cornerRadius = 20
+		cellContentView.layer.masksToBounds = true
+		cellContentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+	}
 
 	func configure(with category: EventCategory) {
 		eventImage.image = UIImage(named: category.imageName)
 		eventTitle.text = category.name
+
 	}
 
 	func updateSelection(isSelected: Bool) {
-			UIView.animate(withDuration: 0.2) {
-				self.backgroundColor = isSelected ? .systemBlue : .systemRed
-				self.layer.borderColor = isSelected ? UIColor.systemBlue.cgColor : UIColor.systemGray5.cgColor
-			}
+		UIView.animate(withDuration: 0.2) {
+			self.cellContentView.backgroundColor = isSelected ? .systemBlue : .systemRed
+			self.eventTitle.textColor = isSelected ? .white: .black
+
 		}
+	}
 
 }
