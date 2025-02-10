@@ -17,7 +17,7 @@ class EventsDetailViewController: BaseViewController {
 	// MARK: UI Elements
 	private let tableView: UITableView = {
 		let table = UITableView()
-		table.backgroundColor = .clear
+		table.backgroundColor = .globe
 		table.separatorStyle = .none
 		table.register(cellType: OddTableViewCell.self)
 		return table
@@ -28,7 +28,6 @@ class EventsDetailViewController: BaseViewController {
 	init(eventKey: String) {
 		self.viewModel = EventDetailViewModel(eventKey: eventKey)
 		super.init(nibName: nil, bundle: nil)
-		self.title = "Odds"
 	}
 
 	required init?(coder: NSCoder) {
@@ -45,7 +44,17 @@ class EventsDetailViewController: BaseViewController {
 
 	// MARK: Setup UI
 	private func setupUI() {
+		let titleLabel = UILabel()
+		titleLabel.text = "Odds"
+		titleLabel.backgroundColor = .clear
+		titleLabel.textColor = .textWhite
+		titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+		titleLabel.textAlignment = .center
+
+		self.navigationItem.titleView = titleLabel
+
 		view.addSubview(tableView)
+		view.backgroundColor = .globe
 
 		tableView.snp.makeConstraints { make in
 			make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
