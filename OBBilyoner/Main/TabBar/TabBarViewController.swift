@@ -40,12 +40,14 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 		self.viewControllers = [UINavigationController(rootViewController: eventsVC), UINavigationController(rootViewController: selectedEventsVC)]
 
 		//Configure tab bar appearance
-		self.tabBar.tintColor = .systemBlue
-		self.tabBar.backgroundColor = .systemBackground
+		self.tabBar.tintColor = .iconPrimary
+		self.tabBar.unselectedItemTintColor = .iconSeconday
+		self.tabBar.backgroundColor = .globe
+		self.tabBar.isTranslucent = false
 
 		// Create custom basket button.
 		let basketButton = UIButton()
-		basketButton.backgroundColor = .systemBlue
+		basketButton.backgroundColor = .iconPrimary
 		basketButton.layer.cornerRadius = 40
 		basketButton.layer.masksToBounds = true
 		basketButton.tintColor = .white

@@ -19,7 +19,8 @@ extension UIColor {
 	static let textPrimary = UIColor(hex: "#B19CFF")
 	static let textSecondary = UIColor(hex: "#B5DB1C")
 
-
+	static let iconPrimary = UIColor(hex: "#775CDF")
+	static let iconSeconday = UIColor(hex: "#9F9F9F")
 
 
 	convenience init(hex string: String) {
