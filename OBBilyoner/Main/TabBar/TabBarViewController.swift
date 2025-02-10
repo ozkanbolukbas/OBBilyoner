@@ -26,18 +26,18 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
 	func setupViews() {
 		// Create view controllers for each tab
-		let homeVM = SelectedEventsViewModel()
-		let homeVC = SelectedEventsViewController(viewModel: homeVM)
+		let selectedEventsVM = SelectedEventsViewModel()
+		let selectedEventsVC = SelectedEventsViewController(viewModel: selectedEventsVM)
 		let basketVM = BasketViewModel.shared
 		let basketVC = BasketViewController(viewModel: basketVM)
 		let eventsVM = EventsViewModel()
 		let eventsVC = EventsViewController(viewModel: eventsVM)
 
 		// Set the view controllers for tab bar
-		homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
-		eventsVC.tabBarItem = UITabBarItem(title: "Events", image: UIImage(systemName: "sportscourt"), tag: 1)
+		eventsVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+		selectedEventsVC.tabBarItem = UITabBarItem(title: "Events", image: UIImage(systemName: "sportscourt"), tag: 1)
 		basketVC.tabBarItem = UITabBarItem(title: "Basket", image: UIImage(systemName: "cart"), tag: 2)
-		self.viewControllers = [UINavigationController(rootViewController: homeVC), UINavigationController(rootViewController: eventsVC)]
+		self.viewControllers = [UINavigationController(rootViewController: eventsVC), UINavigationController(rootViewController: selectedEventsVC)]
 
 		//Configure tab bar appearance
 		self.tabBar.tintColor = .systemBlue
