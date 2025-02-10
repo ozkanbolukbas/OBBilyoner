@@ -32,6 +32,7 @@ class BasketViewModel: ViewModelType {
 
 	// MARK: - Private Properties
 	private let disposeBag = DisposeBag()
+	private let analticsManager: AnalyticsManager
 
 	// Subjects for input actions.
 	private let quickBetAmountSubject = PublishSubject<Double>()
@@ -50,7 +51,8 @@ class BasketViewModel: ViewModelType {
 	static let shared = BasketViewModel()
 
 	// MARK: - Initialization
-	private init() {
+	private init(analyticsManager: AnalyticsManager = AnalyticsManager.shared) {
+		analticsManager = analyticsManager
 		// Setup Input.
 		self.input = Input(
 			quickBetAmount: quickBetAmountSubject.asObserver(),
@@ -145,10 +147,13 @@ class BasketViewModel: ViewModelType {
 	func checkAndProcessEvent(event: BasketModel) {
 		if basketEvents.value.contains(where: { $0.id == event.id && $0.index == event.index }) {
 			removeEvent(event)
+			analticsManager.log(.removeBetFromCart(id: event.id, homeTeam: event.odd.homeTeam ?? "", awayTeam: event.odd.awayTeam ?? "", bet: getBetType(for: event.index)))
 		} else if basketEvents.value.contains(where: { $0.id == event.id }) {
 			updateEvent(event)
+			analticsManager.log(.updateBetFromCart(id: event.id, homeTeam: event.odd.homeTeam ?? "", awayTeam: event.odd.awayTeam ?? "", bet: getBetType(for: event.index)))
 		} else {
 			addEvent(event)
+			analticsManager.log(.addBetToCart(id: event.id, homeTeam: event.odd.homeTeam ?? "", awayTeam: event.odd.awayTeam ?? "", bet: getBetType(for: event.index)))
 		}
 	}
 
@@ -176,5 +181,18 @@ class BasketViewModel: ViewModelType {
 		var currentEvents = basketEvents.value
 		currentEvents.removeAll { $0.id == event.id }
 		basketEvents.accept(currentEvents)
+	}
+
+	private func getBetType(for index: Int) -> String {
+		switch index {
+		case 0:
+			return "MS1"
+		case 1:
+			return "MS2"
+		case 2:
+			return "Draw"
+		default:
+			return ""
+		}
 	}
 }
