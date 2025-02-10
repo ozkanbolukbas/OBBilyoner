@@ -17,6 +17,9 @@ class SelectedEventsViewController: BaseViewController {
 	let viewModel: SelectedEventsViewModel
 	let disposeBag = DisposeBag()
 	private let refreshControl = UIRefreshControl()
+	private lazy var emptyDataView: EmptyDataView = {
+		return EmptyDataView(message: "Uygun maç bulunmuyor", buttonTitle: nil)
+	   }()
 
 	init(viewModel: SelectedEventsViewModel) {
 		self.viewModel = viewModel
@@ -39,6 +42,7 @@ class SelectedEventsViewController: BaseViewController {
 		eventsCollectionView.register(cellType: EventsCollectionViewCell.self)
 		oddsTableView.register(cellType: OddTableViewCell.self)
 		oddsTableView.refreshControl = refreshControl
+		oddsTableView.backgroundView = emptyDataView
 		bindViewModel()
 		viewModel.input.viewDidLoad.onNext(())
 	}
@@ -114,6 +118,14 @@ class SelectedEventsViewController: BaseViewController {
 				DispatchQueue.main.async {
 					self.updateSelectedCategory(at: index)
 				}
+			})
+			.disposed(by: disposeBag)
+
+		viewModel.output.hideEmptyState
+			.drive(onNext: { [weak self] isHidden in
+				guard let self = self else { return }
+				self.emptyDataView.isHidden = isHidden
+				self.oddsTableView.reloadData()
 			})
 			.disposed(by: disposeBag)
 	}

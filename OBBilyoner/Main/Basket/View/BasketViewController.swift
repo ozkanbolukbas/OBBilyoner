@@ -22,6 +22,10 @@ class BasketViewController: UIViewController {
 		return table
 	}()
 
+	private lazy var emptyDataView: EmptyDataView = {
+		   return EmptyDataView(message: "Kuponunda hiç maç bulunmuyor", buttonTitle: "Eklemeye başla")
+	   }()
+
 	private let totalView: UIView = {
 		let view = UIView()
 		view.backgroundColor = .island
@@ -140,6 +144,7 @@ class BasketViewController: UIViewController {
 		titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
 		titleLabel.textAlignment = .center
 		self.navigationItem.titleView = titleLabel
+		tableView.backgroundView = emptyDataView
 
 		let quickBetAmounts = [50, 100, 500, 1000, 7500]
 		quickBetAmounts.forEach { amount in
@@ -245,6 +250,24 @@ class BasketViewController: UIViewController {
 				.bind(to: viewModel.input.quickBetAmount)
 				.disposed(by: disposeBag)
 		}
+
+		viewModel.output.events
+			.drive(onNext: { [weak self] events in
+				guard let self = self else { return }
+				// If there are no events, show the empty view. Otherwise, hide it.
+				self.emptyDataView.isHidden = !events.isEmpty
+
+				// Optionally, reload your table view if needed:
+				self.tableView.reloadData()
+			})
+			.disposed(by: disposeBag)
+
+		emptyDataView.actionButton.rx.tap
+			.subscribe(onNext: { [weak self] in
+				guard let self = self else { return }
+				self.dismiss(animated: true, completion: nil)
+			})
+			.disposed(by: disposeBag)
 	}
 }
 

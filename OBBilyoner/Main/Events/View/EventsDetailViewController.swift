@@ -23,6 +23,10 @@ class EventsDetailViewController: BaseViewController {
 		return table
 	}()
 
+	private lazy var emptyDataView: EmptyDataView = {
+		return EmptyDataView(message: "Uygun maç bulunmuyor", buttonTitle: "Diğer kategoriler")
+	   }()
+
 
 	// MARK: - Initialization
 	init(eventKey: String) {
@@ -55,7 +59,7 @@ class EventsDetailViewController: BaseViewController {
 
 		view.addSubview(tableView)
 		view.backgroundColor = .globe
-
+		tableView.backgroundView = emptyDataView
 		tableView.snp.makeConstraints { make in
 			make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
 			make.leading.trailing.bottom.equalToSuperview()
@@ -87,6 +91,21 @@ class EventsDetailViewController: BaseViewController {
 					.bind(to: self.viewModel.input.oddSelected)
 					.disposed(by: cell.disposeBag)
 			}
+			.disposed(by: disposeBag)
+
+		viewModel.output.hideEmptyState
+			.drive(onNext: { [weak self] isHidden in
+				guard let self = self else { return }
+				self.emptyDataView.isHidden = isHidden
+				self.tableView.reloadData()
+			})
+			.disposed(by: disposeBag)
+
+		emptyDataView.actionButton.rx.tap
+			.subscribe(onNext: { [weak self] in
+				guard let self = self else { return }
+				self.navigationController?.popViewController(animated: true)
+			})
 			.disposed(by: disposeBag)
 
 		viewModel.output.isLoading

@@ -22,6 +22,7 @@ class EventDetailViewModel: ViewModelType {
 		let basketUpdates: Driver<Set<String>>
 		let isLoading: Driver<Bool>
 		let error: Driver<APIError?>
+		let hideEmptyState: Driver<Bool>
 	}
 
 	// MARK: - Public Properties
@@ -40,7 +41,8 @@ class EventDetailViewModel: ViewModelType {
 	private let oddsRelay = BehaviorRelay<[OddsResponse]>(value: [])
 	private let loadingRelay = BehaviorRelay<Bool>(value: false)
 	private let errorRelay = BehaviorRelay<APIError?>(value: nil)
-	
+	private let hideEmptyStateRelay = BehaviorRelay<Bool>(value: true)
+
 	// Event Key.
 	private let eventKey: String
 
@@ -61,7 +63,8 @@ class EventDetailViewModel: ViewModelType {
 				Set(events.map { "\($0.id)-\($0.index)" })
 			}.asDriver(onErrorJustReturn: []),
 			isLoading: loadingRelay.asDriver(),
-			error: errorRelay.asDriver()
+			error: errorRelay.asDriver(),
+			hideEmptyState: hideEmptyStateRelay.asDriver()
 		)
 
 		setupBindings()
@@ -93,6 +96,9 @@ class EventDetailViewModel: ViewModelType {
 				self.loadingRelay.accept(false)
 				let filteredOdds = oddsResponse.filter { !($0.bookmakers?.isEmpty ?? true) }
 				self.oddsRelay.accept(filteredOdds)
+				if filteredOdds.isEmpty {
+					self.hideEmptyStateRelay.accept(false)
+				}
 			}, onFailure: { [weak self] error in
 				guard let self = self else { return }
 				self.loadingRelay.accept(false)

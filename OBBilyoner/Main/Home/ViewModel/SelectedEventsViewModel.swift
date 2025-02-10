@@ -26,6 +26,7 @@ class SelectedEventsViewModel: ViewModelType {
 		let isLoading: Driver<Bool>
 		let error: Driver<APIError?>
 		let selectedCategoryIndex: Driver<Int>
+		let hideEmptyState: Driver<Bool>
 	}
 
 	// MARK: - Public Properties
@@ -47,6 +48,7 @@ class SelectedEventsViewModel: ViewModelType {
 	private let loadingRelay = BehaviorRelay<Bool>(value: false)
 	private let errorRelay = BehaviorRelay<APIError?>(value: nil)
 	private let selectedCategoryIndexRelay = BehaviorRelay<Int>(value: 0)
+	private let hideEmptyStateRelay = BehaviorRelay<Bool>(value: true)
 
 	// MARK: - Initialization
 	init() {
@@ -67,7 +69,8 @@ class SelectedEventsViewModel: ViewModelType {
 			}.asDriver(onErrorJustReturn: []),
 			isLoading: loadingRelay.asDriver(),
 			error: errorRelay.asDriver(),
-			selectedCategoryIndex: selectedCategoryIndexRelay.asDriver()
+			selectedCategoryIndex: selectedCategoryIndexRelay.asDriver(),
+			hideEmptyState: hideEmptyStateRelay.asDriver()
 		)
 
 		setupBindings()
@@ -84,12 +87,16 @@ class SelectedEventsViewModel: ViewModelType {
 
 		// When a category is selected, update the selected index and fetch events for that category.
 		selectedRowSubject
-			.do(onNext: { [weak self] indexPath in
-				self?.selectedCategoryIndexRelay.accept(indexPath.row)
+			.map { $0.row }
+			.distinctUntilChanged()
+			.do(onNext: { [weak self] row in
+				self?.selectedCategoryIndexRelay.accept(row)
 			})
-			.withLatestFrom(categoriesRelay) { ($0, $1) }
-			.subscribe(onNext: { [weak self] (indexPath, categories) in
-				let category = categories[indexPath.row]
+			.withLatestFrom(categoriesRelay) { (row, categories) in
+				return (row, categories)
+			}
+			.subscribe(onNext: { [weak self] (row, categories) in
+				let category = categories[row]
 				self?.fetchEvents(for: category.key)
 			})
 			.disposed(by: disposeBag)
@@ -125,6 +132,9 @@ class SelectedEventsViewModel: ViewModelType {
 				self.loadingRelay.accept(false)
 				let filteredOdds = oddsResponse.filter { !($0.bookmakers?.isEmpty ?? true) }
 				self.eventsRelay.accept(filteredOdds)
+				if filteredOdds.isEmpty {
+					self.hideEmptyStateRelay.accept(false)
+				}
 			}, onFailure: { [weak self] error in
 				guard let self = self else { return }
 				self.loadingRelay.accept(false)
